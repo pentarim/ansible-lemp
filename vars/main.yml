@@ -1,0 +1,16 @@
+---
+# PHP-FPM directives
+php_packages:
+  - php7.0-cli
+  - php7.0-intl
+  - php7.0-curl
+#  - php7.0-cgi
+  - php7.0-fpm
+  - php7.0-mysql
+  - php7.0-gd
+php_upload_max_filesize: "20M"
+php_post_max_size: "20M"
+php_memory_limit: "256M"
+
+nginx_remove_default_vhost: true
+

@@ -1,0 +1,5 @@
+.idea/
+.vagrant/
+vendor/
+tmp/
+Ansiblefile.lock

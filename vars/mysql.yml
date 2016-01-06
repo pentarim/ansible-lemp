@@ -1,0 +1,18 @@
+#optimized for server with total of 512M RAM
+mysql_key_buffer_size: "16M"
+mysql_max_allowed_packet: "1M"
+mysql_table_open_cache: "64"
+mysql_sort_buffer_size: "512K"
+mysql_read_buffer_size: "256K"
+mysql_read_rnd_buffer_size: "512K"
+mysql_myisam_sort_buffer_size: "8M"
+mysql_thread_cache_size: "2M"
+mysql_query_cache_size: "2M"
+mysql_max_connections: 25
+mysql_innodb_file_per_table: "1"
+mysql_innodb_buffer_pool_size: "64M"
+mysql_innodb_additional_mem_pool_size: "8M"
+mysql_innodb_log_file_size: "8M"
+mysql_innodb_log_buffer_size: "2M"
+mysql_innodb_flush_log_at_trx_commit: "1"
+mysql_innodb_lock_wait_timeout: 50

@@ -1,0 +1,41 @@
+---
+- hosts: lemp
+  gather_facts: yes
+
+  vars_files:
+    - [ "secret/credentials/foo.yml", "secret/credentials/default.yml" ]
+    - vars/dotdeb.yml
+    - vars/mysql.yml
+    - vars/main.yml
+
+  roles:
+    - aeriscloud.dotdeb
+    - geerlingguy.git
+    - geerlingguy.nginx
+    - geerlingguy.mysql
+    - pentarim.php7
+    - geerlingguy.composer
+#    - foo
+
+  tasks:
+    - name: "Check if config is already copied"
+      stat: path=/etc/nginx/sites-available/foo.conf
+      register: foo_nginx_config
+
+    - name: "Copy nginx config"
+      when: foo_nginx_config.stat.exists == False
+      copy: src=files/nginx/default.conf dest=/etc/nginx/sites-available/foo.conf
+
+    - name: "Check if config is already symlinked"
+      stat: path=/etc/nginx/sites-enabled/foo.conf
+      register: foo_nginx_config_symlink
+
+    - name: "Symlink nginx config"
+      when: foo_nginx_config_symlink.stat.exists == False
+      shell: ln -s /etc/nginx/sites-available/foo.conf /etc/nginx/sites-enabled/
+      notify: restart nginx
+
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
+

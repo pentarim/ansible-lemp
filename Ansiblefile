@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site "https://galaxy.ansible.com/api/v1"
+
+path "./vendor/"
+
+role "aeriscloud.dotdeb"
+role "geerlingguy.composer"
+role "geerlingguy.nginx"
+role "geerlingguy.git"
+role "geerlingguy.mysql"
+#role "nbz4live.php-fpm"
+role "debops.users"
+role "debops.fail2ban"
+role "debops.secret"
+role "debops.ntp"
+role "pentarim.php7",
+  github: "pentarim/ansible-role-php7"
+
+
